@@ -16,16 +16,17 @@ const userSchema = new mongoose.Schema({
       minlength: 5,
       maxlength: 255
     },
-    password: {
+  password: {
       type: String,
       required: true,
       minlength: 5,
       maxlength: 1024
     },
+  isAdmin: Boolean
 });
 
 userSchema.methods.generateAuthToken = function() {
-  return jwt.sign({ _id: this._id }, "mySecretKey");
+  return jwt.sign({ _id: this._id, isAdmin: this.isAdmin}, "mySecretKey");
 }
 
 const User = mongoose.model('User', userSchema);

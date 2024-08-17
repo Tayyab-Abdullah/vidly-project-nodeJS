@@ -17,6 +17,7 @@
     "joi": "^13.1.0",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.4",
-    "mongoose": "^5.0.2"
+    "mongoose": "^5.0.2",
+    "winston": "^3.14.2"
   }
 }

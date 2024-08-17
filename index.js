@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 require('express-async-errors');
+const winston = require('winston');
 const config = require('config');
 const error = require('./middleware/error');
 const users = require('./routes/users');
@@ -15,6 +16,8 @@ const app = express();
 //   console.error("FATAL ERROR: jwtPrivateKey is not defined.");
 //   process.exit(1);
 // }
+
+winston.add(winston.transports.File, { filename: 'logfile.log' });
 
 mongoose.connect('mongodb://localhost/vidly')
   .then(() => console.log('Connected to MongoDB...'))
